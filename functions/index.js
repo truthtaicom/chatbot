@@ -1,8 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-admin.initializeApp({
-  credential: admin.credential.applicationDefault()
-});
+
+admin.initializeApp();
 
 const express = require('express');
 const cors = require('cors');
@@ -22,5 +21,11 @@ app.post('/bot', async (req, res) => {
     res.status(500).send(err.details)
   }
 });
+
+app.get('/products', async (req, res) => {
+  const productsRef = await admin.database().ref('/products').once('value')
+  const productValue = await productsRef.val()
+  res.status(200).json(productValue);
+})
 
 exports.api = functions.https.onRequest(app);

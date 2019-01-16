@@ -67,3 +67,5 @@ node_modules/
 .cache
 
 key.json
+
+cloneProducts

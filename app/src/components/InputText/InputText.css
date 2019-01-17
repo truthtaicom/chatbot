@@ -1,0 +1,4 @@
+.chatbot__input__text-input {
+  display: flex;
+  flex-direction: row;
+}

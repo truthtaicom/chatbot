@@ -29,3 +29,6 @@ app.get('/products', async (req, res) => {
 })
 
 exports.api = functions.https.onRequest(app);
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => {
+  console.log(JSON.stringify(req.body))
+})

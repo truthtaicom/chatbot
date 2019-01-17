@@ -1,5 +1,72 @@
 @import '~antd/dist/antd.css';
+body {
+  overflow: hidden;
+}
 
 .chatbot {
-  
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  width: 310px;
+  height: 100vh;
+  border: 1px solid #ddd;
+  margin: 0 auto;
+}
+
+.chatbot__header {
+  padding: 10px;
+}
+
+.chatbot__body {
+  overflow-x: hidden;
+  padding: 10px;
+  flex: 1;
+}
+
+.chatbot__body__item {
+  display: flex;
+  margin: 5px 0;
+  flex-direction: column;
+}
+
+.chatbot__body__item--me {
+  align-items: flex-end;
+}
+
+.chatbot__body__item--sender {
+  align-items: flex-start;
+}
+
+.chatbot__body__item--me > .chatbot__body__item__message{
+  margin-right: 10px;
+  margin-left: 0;
+}
+
+.chatbot__body__item__avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.chatbot__body__item__message {
+  background: #1890ff;
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-top: -10px;
+  max-width: 80%;
+}
+
+.chatbot__input {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .chatbot {
+    width: 100vw;
+  }
 }

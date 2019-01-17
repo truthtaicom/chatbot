@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "antd": "^3.12.3",
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "lodash.get": "^4.4.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3"

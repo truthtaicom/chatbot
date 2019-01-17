@@ -1,15 +1,13 @@
 import React from 'react';
-import { Avatar, Row, Col } from 'antd'
+import { Avatar } from 'antd'
 
-export default function SimpleMessage({ message }) {
+export default function SimpleMessage({ message, username }) {
   return (
-    <Row>
-      <Col span={4}>
-        <Avatar />
-      </Col>
-      <Col span={20}>
-        { message }
-      </Col>
-    </Row>
+    <>
+      <Avatar className="chatbot__body__item__avatar">{username}</Avatar>
+      <div className="chatbot__body__item__message">
+        {message}
+      </div>
+    </>
   )
 }

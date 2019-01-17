@@ -2,6 +2,7 @@ import React from 'react'
 import {
   Form, Input, Button,
 } from 'antd';
+import './InputText.css'
 
 function InputText(props) {
   const { getFieldDecorator } = props.form;
@@ -12,11 +13,14 @@ function InputText(props) {
         console.log('Received values of form: ', values);
       }
 
+      props.form.resetFields()
+
       props.onSubmit(values)
     });
   }
   return (
-    <div>
+    <div className="chatbot__input__text-input">
+      <Form onSubmit={onSubmit} layout="inline">
         <Form.Item>
           {getFieldDecorator('message', {
             rules: [{
@@ -24,7 +28,7 @@ function InputText(props) {
               message: 'Please input your message',
             }],
           })(
-            <Input placeholder="Please input your message" />
+            <Input placeholder="Please input your message" type="text" />
           )}
         </Form.Item>
 
@@ -33,7 +37,8 @@ function InputText(props) {
             Send
           </Button>
         </Form.Item>
-    </div>
+      </Form>
+    </div >
   )
 }
 

@@ -35,7 +35,7 @@ export default function Chatbot(props) {
                 { 
                   data &&
                   <React.Suspense fallback="Loading">
-                    <ListTemplate data={data} />
+                    <ListTemplate data={data} onSelect={props.onSelect}/>
                   </React.Suspense>
                 }
               </section>

@@ -4,11 +4,11 @@ import ListTemplateCard from './ListTemplate.Card'
 import './ListTemplate.css'
 
 
-export default function ListTemplate({ data }) {
+export default function ListTemplate({ data, ...restProps }) {
   return (
     <Carousel effect="scrollx" autoplay={true}>
       {
-        data.map(elm => <ListTemplateCard {...elm} />)
+        data.map(elm => <ListTemplateCard {...elm} {...restProps} />)
       }
     </Carousel>
   )

@@ -14,16 +14,16 @@ class ChatbotContainer extends React.Component {
     this.messageRef && this.messageRef.scrollIntoView({ behavior: "smooth" });
   }
 
-  onSubmit = async ({ message }) => {
+  onSubmit = async ({ message, parameters }) => {
       this.pushMessage({ text: message }, 'me')
 
-      const result = await axios.post('https://us-central1-nordic-bot.cloudfunctions.net/api/bot', { text: message })
+      const result = await axios.post('https://us-central1-nordic-bot.cloudfunctions.net/api/bot', { text: message, parameters })
       let botMessage = get(result, 'data[0].queryResult.fulfillmentMessages[0].text.text[0]')
       if (!botMessage) {
         botMessage = 'I dont understand your question 😫'
       }
       
-      const payloadProto = get(result, 'data[0].queryResult.fulfillmentMessages[1].payload', {})
+      const payloadProto = get(result, 'data[0].queryResult.fulfillmentMessages[1].payload.fields.PLATFORM_UNSPECIFIED.structValue', {})
       const payloadJSON = payloadProto && structProtoToJson(payloadProto)
       const payload = getPayload(payloadJSON)
 
@@ -39,7 +39,7 @@ class ChatbotContainer extends React.Component {
 
   render() {
     return (
-      <Chatbot onSubmit={this.onSubmit} messages={this.state.messages} messageRef={el => this.messageRef = el} />
+      <Chatbot onSubmit={this.onSubmit} messages={this.state.messages} messageRef={el => this.messageRef = el} onSelect={this.onSubmit}/>
     )
   }
 }
